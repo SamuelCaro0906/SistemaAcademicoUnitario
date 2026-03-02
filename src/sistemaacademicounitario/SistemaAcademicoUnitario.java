@@ -114,5 +114,32 @@ public class Main {
         System.out.println("╚══════════════════════════════════════╝");
         System.out.print("Seleccione una opción: ");
     }
+public static void listarEstudiantes() {
+    System.out.println("\n=== LISTADO DE ESTUDIANTES ===");
 
+    if (estudiantes.isEmpty()) {
+        System.out.println("No hay estudiantes registrados.");
+        return;
+    }
+
+    for (int i = 0; i < estudiantes.size(); i++) {
+        System.out.println((i + 1) + ". " + estudiantes.get(i));
+    }
+    System.out.println("Total: " + estudiantes.size() + " estudiante(s).");
+}
+
+public static void buscarEstudiante() {
+    System.out.println("\n=== BUSCAR ESTUDIANTE ===");
+    System.out.print("Ingrese el codigo del estudiante: ");
+    String codigo = sc.nextLine().trim();
+
+    for (Estudiante e : estudiantes) {
+        if (e.getCodigo().equalsIgnoreCase(codigo)) {
+            System.out.println("Estudiante encontrado:");
+            System.out.println(e);
+            return;
+        }
+    }
+    System.out.println("No se encontro ningun estudiante con el codigo: " + codigo);
+}
 }
