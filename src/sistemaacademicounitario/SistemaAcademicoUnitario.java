@@ -142,4 +142,58 @@ public static void buscarEstudiante() {
     }
     System.out.println("No se encontro ningun estudiante con el codigo: " + codigo);
 }
+public static void actualizarEstudiante() {
+    System.out.println("\n=== ACTUALIZAR ESTUDIANTE ===");
+    System.out.print("Ingrese el codigo del estudiante a actualizar: ");
+    String codigo = sc.nextLine().trim();
+
+    Estudiante encontrado = null;
+    for (Estudiante e : estudiantes) {
+        if (e.getCodigo().equalsIgnoreCase(codigo)) {
+            encontrado = e;
+            break;
+        }
+    }
+
+    if (encontrado == null) {
+        System.out.println("No se encontro ningun estudiante con el codigo: " + codigo);
+        return;
+    }
+
+    System.out.println("Datos actuales:");
+    System.out.println(encontrado);
+    System.out.println("Ingrese los nuevos datos (ENTER para mantener el valor actual):");
+
+    System.out.print("Nuevo nombre [" + encontrado.getNombre() + "]: ");
+    String nombre = sc.nextLine().trim();
+    if (!nombre.isEmpty()) encontrado.setNombre(nombre);
+
+    System.out.print("Nuevo apellido [" + encontrado.getApellido() + "]: ");
+    String apellido = sc.nextLine().trim();
+    if (!apellido.isEmpty()) encontrado.setApellido(apellido);
+
+    System.out.print("Nueva edad [" + encontrado.getEdad() + "]: ");
+    String edadStr = sc.nextLine().trim();
+    if (!edadStr.isEmpty()) {
+        try {
+            encontrado.setEdad(Integer.parseInt(edadStr));
+        } catch (NumberFormatException e) {
+            System.out.println("Edad invalida, no se modifico.");
+        }
+    }
+
+    System.out.print("Nuevo semestre [" + encontrado.getSemestre() + "]: ");
+    String semestreStr = sc.nextLine().trim();
+    if (!semestreStr.isEmpty()) {
+        try {
+            encontrado.setSemestre(Integer.parseInt(semestreStr));
+        } catch (NumberFormatException e) {
+            System.out.println("Semestre invalido, no se modifico.");
+        }
+    }
+
+    System.out.println("Estudiante actualizado exitosamente.");
+    System.out.println(encontrado);
+}
+
 }
