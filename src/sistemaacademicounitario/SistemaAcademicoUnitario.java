@@ -4,17 +4,14 @@
  */
 package sistemaacademicounitario;
 
-/**
- *
- * @author Csamu
- */
-public class SistemaAcademicoUnitario {
+import java.util.ArrayList;
+import java.util.Scanner;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+public class Main {
+
+    static ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    static ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    static ArrayList<Nota> notas = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+
 }
