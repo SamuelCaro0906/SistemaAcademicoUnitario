@@ -195,5 +195,34 @@ public static void actualizarEstudiante() {
     System.out.println("Estudiante actualizado exitosamente.");
     System.out.println(encontrado);
 }
+public static void eliminarEstudiante() {
+    System.out.println("\n=== ELIMINAR ESTUDIANTE ===");
+    System.out.print("Ingrese el codigo del estudiante a eliminar: ");
+    String codigo = sc.nextLine().trim();
 
+    Estudiante encontrado = null;
+    for (Estudiante e : estudiantes) {
+        if (e.getCodigo().equalsIgnoreCase(codigo)) {
+            encontrado = e;
+            break;
+        }
+    }
+
+    if (encontrado == null) {
+        System.out.println("No se encontro ningun estudiante con el codigo: " + codigo);
+        return;
+    }
+
+    System.out.println("Estudiante a eliminar:");
+    System.out.println(encontrado);
+    System.out.print("Confirmar eliminacion (S/N): ");
+    String confirmacion = sc.nextLine().trim();
+
+    if (confirmacion.equalsIgnoreCase("S")) {
+        estudiantes.remove(encontrado);
+        System.out.println("Estudiante eliminado exitosamente.");
+    } else {
+        System.out.println("Eliminacion cancelada.");
+    }
+}
 }
