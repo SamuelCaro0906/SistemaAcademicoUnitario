@@ -128,4 +128,48 @@ public static void eliminarNota() {
         System.out.println("Eliminacion cancelada.");
     }
 }
+public static void actualizarNota() {
+    System.out.println("\n=== ACTUALIZAR NOTA ===");
+    System.out.print("Ingrese el codigo del estudiante: ");
+    String codigoEstudiante = sc.nextLine().trim();
+
+    System.out.print("Ingrese el codigo de la asignatura: ");
+    String codigoAsignatura = sc.nextLine().trim();
+
+    Nota encontrada = null;
+    for (Nota n : notas) {
+        if (n.getEstudiante().getCodigo().equalsIgnoreCase(codigoEstudiante) &&
+            n.getAsignatura().getCodigo().equalsIgnoreCase(codigoAsignatura)) {
+            encontrada = n;
+            break;
+        }
+    }
+
+    if (encontrada == null) {
+        System.out.println("No se encontro ninguna nota con esos datos.");
+        return;
+    }
+
+    System.out.println("Datos actuales:");
+    System.out.println(encontrada);
+    System.out.println("Ingrese los nuevos datos (ENTER para mantener el valor actual):");
+
+    System.out.print("Nuevo valor [" + encontrada.getValor() + "]: ");
+    String valorStr = sc.nextLine().trim();
+    if (!valorStr.isEmpty()) {
+        try {
+            encontrada.setValor(Double.parseDouble(valorStr));
+        } catch (NumberFormatException e) {
+            System.out.println("Valor invalido, no se modifico.");
+        }
+    }
+
+    System.out.print("Nuevo periodo [" + encontrada.getPeriodo() + "]: ");
+    String periodo = sc.nextLine().trim();
+    if (!periodo.isEmpty()) encontrada.setPeriodo(periodo);
+
+    System.out.println("Nota actualizada exitosamente.");
+    System.out.println(encontrada);
+}
+
 }
