@@ -117,4 +117,34 @@ public class SistemaAcademicoUnitario {
     System.out.println("Asignatura actualizada exitosamente.");
     System.out.println(encontrada);
 }
+    public static void eliminarAsignatura() {
+    System.out.println("\n=== ELIMINAR ASIGNATURA ===");
+    System.out.print("Ingrese el codigo de la asignatura a eliminar: ");
+    String codigo = sc.nextLine().trim();
+
+    Asignatura encontrada = null;
+    for (Asignatura a : asignaturas) {
+        if (a.getCodigo().equalsIgnoreCase(codigo)) {
+            encontrada = a;
+            break;
+        }
+    }
+
+    if (encontrada == null) {
+        System.out.println("No se encontro ninguna asignatura con el codigo: " + codigo);
+        return;
+    }
+
+    System.out.println("Asignatura a eliminar:");
+    System.out.println(encontrada);
+    System.out.print("Confirmar eliminacion (S/N): ");
+    String confirmacion = sc.nextLine().trim();
+
+    if (confirmacion.equalsIgnoreCase("S")) {
+        asignaturas.remove(encontrada);
+        System.out.println("Asignatura eliminada exitosamente.");
+    } else {
+        System.out.println("Eliminacion cancelada.");
+    }
+}
     }
