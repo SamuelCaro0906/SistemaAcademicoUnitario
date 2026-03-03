@@ -74,5 +74,47 @@ public class SistemaAcademicoUnitario {
     }
     System.out.println("No se encontro ninguna asignatura con el codigo: " + codigo);
 }
-    
+    public static void actualizarAsignatura() {
+    System.out.println("\n=== ACTUALIZAR ASIGNATURA ===");
+    System.out.print("Ingrese el codigo de la asignatura a actualizar: ");
+    String codigo = sc.nextLine().trim();
+
+    Asignatura encontrada = null;
+    for (Asignatura a : asignaturas) {
+        if (a.getCodigo().equalsIgnoreCase(codigo)) {
+            encontrada = a;
+            break;
+        }
+    }
+
+    if (encontrada == null) {
+        System.out.println("No se encontro ninguna asignatura con el codigo: " + codigo);
+        return;
+    }
+
+    System.out.println("Datos actuales:");
+    System.out.println(encontrada);
+    System.out.println("Ingrese los nuevos datos (ENTER para mantener el valor actual):");
+
+    System.out.print("Nuevo nombre [" + encontrada.getNombre() + "]: ");
+    String nombre = sc.nextLine().trim();
+    if (!nombre.isEmpty()) encontrada.setNombre(nombre);
+
+    System.out.print("Nuevos creditos [" + encontrada.getCreditos() + "]: ");
+    String creditosStr = sc.nextLine().trim();
+    if (!creditosStr.isEmpty()) {
+        try {
+            encontrada.setCreditos(Integer.parseInt(creditosStr));
+        } catch (NumberFormatException e) {
+            System.out.println("Creditos invalidos, no se modificaron.");
+        }
+    }
+
+    System.out.print("Nuevo docente [" + encontrada.getDocente() + "]: ");
+    String docente = sc.nextLine().trim();
+    if (!docente.isEmpty()) encontrada.setDocente(docente);
+
+    System.out.println("Asignatura actualizada exitosamente.");
+    System.out.println(encontrada);
+}
     }
