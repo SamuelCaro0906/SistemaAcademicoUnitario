@@ -13,8 +13,9 @@ public class SistemaAcademicoUnitario {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-       public static void registrarAsignatura() {
+    public static void main(String[] args) {}
+    
+    public static void registrarAsignatura() {
     System.out.println("\n=== REGISTRAR ASIGNATURA ===");
 
     System.out.print("Codigo: ");
@@ -46,4 +47,32 @@ public class SistemaAcademicoUnitario {
     System.out.println("Asignatura registrada exitosamente.");
     System.out.println(nueva);
 }
+    public static void listarAsignaturas() {
+    System.out.println("\n=== LISTADO DE ASIGNATURAS ===");
+
+    if (asignaturas.isEmpty()) {
+        System.out.println("No hay asignaturas registradas.");
+        return;
+    }
+
+    for (int i = 0; i < asignaturas.size(); i++) {
+        System.out.println((i + 1) + ". " + asignaturas.get(i));
+    }
+    System.out.println("Total: " + asignaturas.size() + " asignatura(s).");
+}
+    public static void buscarAsignatura() {
+    System.out.println("\n=== BUSCAR ASIGNATURA ===");
+    System.out.print("Ingrese el codigo de la asignatura: ");
+    String codigo = sc.nextLine().trim();
+
+    for (Asignatura a : asignaturas) {
+        if (a.getCodigo().equalsIgnoreCase(codigo)) {
+            System.out.println("Asignatura encontrada:");
+            System.out.println(a);
+            return;
+        }
+    }
+    System.out.println("No se encontro ninguna asignatura con el codigo: " + codigo);
+}
+    
     }
