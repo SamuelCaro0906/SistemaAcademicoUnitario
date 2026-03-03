@@ -45,5 +45,12 @@ public class Asignatura {
     public void setDocente(String docente) {
         this.docente = docente;
     }
-    
+    @Override
+public String toString() {
+    return "Codigo: " + codigo +
+           " | Nombre: " + nombre +
+           " | Creditos: " + creditos +
+           " | Docente: " + docente;
 }
+}
+
