@@ -45,6 +45,15 @@ public class Nota {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
+    public Nota() {}
+
+    public Nota(Estudiante estudiante, Asignatura asignatura, double valor, String periodo) {
+        this.estudiante = estudiante;
+        this.asignatura = asignatura;
+        this.valor = valor;
+        this.periodo = periodo;
+    }
+
 
     @Override
     public String toString() {
