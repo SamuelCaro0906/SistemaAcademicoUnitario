@@ -45,6 +45,14 @@ public class Asignatura {
     public void setDocente(String docente) {
         this.docente = docente;
     }
+    public Asignatura() {}
+    public Asignatura(String codigo, String nombre, int creditos, String docente) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.creditos = creditos;
+        this.docente = docente;
+    }
+    
     @Override
 public String toString() {
     return "Codigo: " + codigo +
